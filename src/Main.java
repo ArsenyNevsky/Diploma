@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Main {
 
-    private static int[] a = {1,2,3,4,5,0,0,0,100,200,300,-40,-60,-80,-100,0,0,0,0};
+    private static int[] a = {1, 2, 3, 4, 5, 0, 0, 0, 100, 200, 300, -40, -60, -80, -100, 0, 0, 0, 0};
 
     public static void main(String[] args) {
         System.out.println("Length = " + a.length + "\nArray = " + Arrays.toString(a));

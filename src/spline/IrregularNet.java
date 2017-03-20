@@ -9,15 +9,14 @@ import static java.lang.Math.*;
 public class IrregularNet {
 
     /**
-     *
      * @param c - исходный поток
      */
     public IrregularNet(int c[]) {
         this.N = c.length;
         this.c = c;
-        x      = SourceNet.getSourceNet(N);
-        C      = getC();
-        xx     = new int[N];
+        x = SourceNet.getSourceNet(N);
+        C = getC();
+        xx = new int[N];
         generateIndexesIrregularNet();
     }
 
@@ -31,7 +30,6 @@ public class IrregularNet {
     }
 
     /**
-     *
      * @return сетку, заполненную 1 и 0;
      */
     public int[] getIrregularNet() {
@@ -39,7 +37,6 @@ public class IrregularNet {
     }
 
     /**
-     *
      * @return исходную сетку
      */
     public ArrayList<Integer> getSourceNet() {
@@ -47,7 +44,6 @@ public class IrregularNet {
     }
 
     /**
-     *
      * @return представление сетки в виде набора 0 и 1, которые обозначают какие
      * узлы надо удалить, а какие оставить
      */
@@ -85,7 +81,7 @@ public class IrregularNet {
             summ += abs((c.get(j) - c.get(j - 1)) / (float) (x.get(j) - x.get(j - 1)));
         }*/
         for (int j = i; j < min(i + q - 1, N); j++) {
-            summ += abs((c[j] - c[j-1]) / (float) (x.get(j) - x.get(j - 1)));
+            summ += abs((c[j] - c[j - 1]) / (float) (x.get(j) - x.get(j - 1)));
         }
         int S = (int) round(C / (P * (summ / q + C / (double) g)));
         return max(1, S);
