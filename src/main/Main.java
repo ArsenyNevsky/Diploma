@@ -20,7 +20,6 @@ public class Main {
         ArrayList<Double> streamWave = quantWaveStream.getConverseQuantStream(waveStream);
 
         swc.decompress(net, streambase, streamWave);*/
-        int[] a = {10, 20, 30, 40, 50};
 
     }
 }
