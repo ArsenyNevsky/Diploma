@@ -1,6 +1,7 @@
-package spline;
+package main.spline;
 
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 import static java.lang.Math.pow;
 
@@ -15,15 +16,10 @@ public class SplineWaveletCompress {
 
     public SplineWaveletCompress(int[] c) {
         net                = new IrregularNet(c);
-        this.irregularNet  = net.getIrregularNet(); // net contains 1 and 0
         this.x             = SourceNet.getSourceNet(c.length); // инициализируем исходную сетку
-        this.c             = c; // инициализируем поток С
-        SIZE_SOURCE_NET    = x.size();
 
         a = new ArrayList<>(c.length);
-        for (int elem : c) {
-            a.add(elem + 0.0);
-        }
+        IntStream.range(0, c.length).forEach(elem -> a.add((double) elem));
     }
 
     /*public SplineWaveletCompress(int irregularIndexes[], double a[], ArrayList<Double> b) {
@@ -85,6 +81,7 @@ public class SplineWaveletCompress {
                 x.add(i + 1);
             }
         }
+
         int size = irregularIndexes.length;
         int decreaseIndex = 0;
         int ind;
@@ -143,12 +140,8 @@ public class SplineWaveletCompress {
         return waveletStream;
     }
 
-    private int[] indexes;
     private ArrayList<Double> b;
     private ArrayList<Double> a;
-    private int[] c;
-    private int SIZE_SOURCE_NET;
     private ArrayList<Integer> x;
-    private int irregularNet[];
     private IrregularNet net;
 }

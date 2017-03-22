@@ -1,7 +1,8 @@
-package quant;
+package main.quant;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.stream.IntStream;
 
 import static java.lang.Math.round;
 
@@ -13,20 +14,19 @@ public class Quant {
     public ArrayList<Integer> getDirectQuantedStream(ArrayList<Double> stream) {
         min = Collections.min(stream);
         max = Collections.max(stream);
+
         final int SIZE = stream.size();
         ArrayList<Integer> outputStream = new ArrayList<>(SIZE);
-        for (int i = 0; i < SIZE; i++) {
-            outputStream.add((int)round((stream.get(i) - min) / (max - min) * 255));
-        }
+        IntStream.range(0, SIZE).forEach(i -> outputStream.add((int)round((stream.get(i) - min) / (max - min) * 255)));
+
         return outputStream;
     }
 
     public ArrayList<Double> getConverseQuantStream(ArrayList<Integer> stream) {
         final int SIZE = stream.size();
         ArrayList<Double> outputStream = new ArrayList<>(SIZE);
-        for (int i = 0; i < SIZE; i++) {
-            outputStream.add(stream.get(i) * (max - min) / 255.0 + min);
-        }
+        IntStream.range(0, SIZE).forEach(i -> outputStream.add(stream.get(i) * (max - min) / 255.0 + min));
+
         return outputStream;
     }
 
