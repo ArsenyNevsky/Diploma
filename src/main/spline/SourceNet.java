@@ -1,4 +1,4 @@
-package spline;
+package main.spline;
 
 import java.util.ArrayList;
 import java.util.stream.IntStream;

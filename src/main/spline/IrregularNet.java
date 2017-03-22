@@ -1,7 +1,8 @@
-package spline;
+package main.spline;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import static java.lang.Math.*;
 
@@ -55,9 +56,8 @@ public class IrregularNet {
         binaryIndexes = new ArrayList<>();
         Arrays.fill(xx, 1);
         binary = new StringBuilder(N);
-        for (int i = 0; i < N; i++) {
-            binary.append(1);
-        }
+        IntStream.range(0, N).forEach(i -> binary.append(1));
+
         int S = 3;
         int currentS;
         while (S < N) { // или S < N - 3
@@ -93,6 +93,7 @@ public class IrregularNet {
             //C += abs((c[i] - c[i - 1]) / (float) (x[i] - x[i - 1])); // if index i start from 1 to N
             C += abs((c[i + 1] - c[i]) / (double) (x.get(i + 1) - x.get(i)));
         }
+
         return C / N;
     }
 
